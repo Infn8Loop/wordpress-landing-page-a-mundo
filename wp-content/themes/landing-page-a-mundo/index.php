@@ -11,7 +11,7 @@ if(MSR_DEBUG == 'true'){
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-
+    <!-- TODO: SEO stuff here & OG tags  -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,13 @@ if(MSR_DEBUG == 'true'){
     <meta name="author" content="Me, you, her, everyone, et al.">
 
     <title><?= MSR_SITE_TITLE; ?> | <?= MSR_SITE_HEADING; ?> </title>
+    <meta property="og:title" content="<?= MSR_TITLE_OGTAG; ?>"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:image" content=""/>
+    
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="<?= $theme_dir; ?>/css/bootstrap.min.css" type="text/css">
@@ -62,13 +69,13 @@ if(MSR_DEBUG == 'true'){
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#about"><?= MSR_ABOUT_LINK_TEXT; ?></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Four Icons</a>
+                        <a class="page-scroll" href="#services"><?= MSR_FEATURES_LINK_TEXT; ?></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Bullshit</a>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Call Me</a>
@@ -86,7 +93,9 @@ if(MSR_DEBUG == 'true'){
                 <h1><?= MSR_SITE_HEADING; ?> </h1>
                 <hr>
                 <p><?= MSR_SITE_TAGLINE; ?></p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">This button makes the page scroll</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">
+                    <?= MSR_SCROLL_DOWN_BUTTON; ?>
+                </a>
             </div>
         </div>
     </header>
@@ -95,10 +104,15 @@ if(MSR_DEBUG == 'true'){
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Want to make an original website yourself?</h2>
+                    <h2 class="section-heading"><?= MSR_ABOUT_HEADING; ?></h2>
                     <hr class="light">
-                    <p class="text-faded">Forget that! Who would ever want to put in all of that effort for a website? Just open up your web browser and type "bootstrap template" into your favorite search engine, like Yahoo! or Bing, and you're on your way! There are hundreds of templates to choose from, but go ahead and pick this same exact template from the first result on google, edit a few lines, and you're on your way! No one will notice!</p>
-                    <a href="http://lmgtfy.com/?q=bootstrap+template" target="_blank" class="btn btn-default btn-xl">Google That Shit</a>
+                    <p class="text-faded"><?= MSR_ABOUT_PARAGRAPH; ?></p>
+                    <a href="<?= MSR_CTA_LINK; ?>" 
+                    <?php if(MSR_CTA_NEW_WINDOW == "true"){?>
+                    target="_blank" <?php } ?>
+                    class="btn btn-default btn-xl">
+                        <?= MSR_CTA_BUTTON; ?>
+                    </a>
                 </div>
             </div>
         </div>
@@ -108,7 +122,7 @@ if(MSR_DEBUG == 'true'){
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">So Fucking Creative</h2>
+                    <h2 class="section-heading"><?= MSR_FEATURES_HEADING; ?></h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -117,16 +131,16 @@ if(MSR_DEBUG == 'true'){
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-globe wow bounceIn text-primary"></i>
-                        <h3>This Fucking Template</h3>
-                        <p class="text-muted">Guaranteed to use the same fucking template that every other bootstrap website uses, downloaded straight from The Web&#0153;</p>
+                        <i class="fa fa-4x fa-<?= MSR_FIRST_ICON; ?> wow bounceIn text-primary"></i>
+                        <h3><?= MSR_FIRST_ICON_LABEL; ?></h3>
+                        <p class="text-muted"><?= MSR_FIRST_ICON_PARAGRAPH; ?></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>This Set of Four Icons</h3>
-                        <p class="text-muted">Look at this cool set of four icons describing different things about us! We use four, because it's the default.</p>
+                        <i class="fa fa-4x fa-<?= MSR_SECOND_ICON; ?> wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3><?= MSR_SECOND_ICON_LABEL; ?></h3>
+                        <p class="text-muted"><?= MSR_SECOND_ICON_PARAGRAPH; ?></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
