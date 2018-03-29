@@ -77,7 +77,24 @@ Template Name: Landing-Page-A-Mundo
             </div>
         </div>
     </section>
-
+    
+    
+  <?php  include( get_home_template() );
+        // Start the loop.
+        while ( have_posts() ) : the_post();
+ 
+            // Include the page content template.
+            get_template_part( 'template-parts/content', 'page' );
+ 
+            // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) {
+                comments_template();
+            }
+ 
+            // End of the loop.
+        endwhile;
+        ?>
+    
     <aside class="bg-dark" id="cta">
         <div class="container text-center">
             <div class="call-to-action">
