@@ -23,13 +23,17 @@ function msr_theme_init(){// runs on every page load
     $page_vars = array(
     'MSR_THEME'                 => 'true',
     'MSR_SITE_TITLE'            => 'Landing-page-a-mundo',
+    'MSR_COLOR_THEME'			=> 'creative',
     'MSR_HERO_IMAGE'            => '',
+    'MSR_BLOG_ENABLE'           => 'false',
     'MSR_SITE_HEADING'          => 'This is where an awesome heading will go',
     'MSR_SITE_TAGLINE'          => "Don't miss out on this amazing WordPress template!",
     'MSR_ABOUT_HEADING'         => "About this template",
     'MSR_ABOUT_LINK_TEXT'       => "About",
     'MSR_ABOUT_PARAGRAPH'       => "This is where you write a huge paragraph of interesting stuff. Unlike other wordpress themes with Landing-Page-A-Mundo your front page will actually look exactly like the preview, and doesn't require ANY shortcode!",
     'MSR_TITLE_OGTAG'           => "Super especially SEO friendly title text goes here, SEO it up!",
+    'MSR_DESCRIPTION_OGTAG'		=> "Describe your website for search engine visitors.",
+    'MSR_SITE_PREVIEW_IMAGE_URL'=> "put a link to an image here for your site preview",
     'MSR_SCROLL_DOWN_BUTTON'    => "Clik Diz to Scroll Downz",
     'MSR_CTA_BUTTON'            => "I bet you won't click this. Oh, wait... yes you will.",
     'MSR_CTA_LINK'              => "http://msrinteractive.com",
@@ -73,6 +77,13 @@ function msr_theme_init(){// runs on every page load
         foreach($_POST as $key=>$val){
             update_option($key, htmlspecialchars($val));
         }
+        //define everything and redirect
+        foreach($page_vars as $key=>$val){
+            define($key, stripslashes (get_option($key) ));
+        }
+        // send you back to the dashboard
+        header("location: " . get_site_url() . "/wp-admin/");
+        exit();
     }
     
     // get all the updated values from the database, define them as constants

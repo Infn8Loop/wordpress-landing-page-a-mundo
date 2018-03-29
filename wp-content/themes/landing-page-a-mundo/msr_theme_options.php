@@ -4,24 +4,45 @@ $icons = array(
     'rocket', 'globe', 'area-chart', 'thumbs-up', 'heart', 'paper-plane', 'bomb', 'pencil', 'magic',   
 );
 ?>
-<style>hr{
+<style>
+hr{
 height: 2px;
 border-top: 2px solid #555;
-}</style>
+}
+</style>
 <div class="title">
     <h1>Customize your 'Landing Page A Mundo' Site </h1>
     <p>Fill out this form to create your langing page in just a few minutes!</p>
 </div>
 
-<form method="POST" action="<?php echo $theme_dir + "/wp-admin/themes.php"; ?>">
+<form method="POST" action="<?php echo get_site_url(); ?>/front-page.php">
     <input type="hidden" name="MSR_THEME" value="true" />
-    <h1>Intro Section</h2>
+    <h1>Site Settings</h2>
     <h3>Title for your awesome site: </h3>
     <input type="text" size="30" name="MSR_SITE_TITLE"  value="<?= MSR_SITE_TITLE; ?>"  />
     <br/>
     <h3>Heading for your awesome site: </h3>
     <input type="text" size="120" name="MSR_SITE_HEADING"  value="<?= MSR_SITE_HEADING; ?>"  />
     <br/>
+    <h3>Accent Color</h3>
+    <select name="MSR_COLOR_THEME" value="<?= MSR_COLOR_THEME; ?>">
+        <option value="creative" <?= (MSR_COLOR_THEME == '') ? 'selected' : '' ?>>
+            Default Orange
+        </option>
+        <option value="blue" <?= (MSR_COLOR_THEME == 'blue') ? 'selected' : '' ?>>
+            Blue
+        </option>
+        <option value="red" <?= (MSR_COLOR_THEME == 'red') ? 'selected' : '' ?>>
+            Red
+        </option>
+        <option value="yellow" <?= (MSR_COLOR_THEME == 'yellow') ? 'selected' : '' ?>>
+            Yellow
+        </option>
+            <option value="teal" <?= (MSR_COLOR_THEME == 'teal') ? 'selected' : '' ?>>
+            Teal
+        </option>
+    </select>
+    
     <h1>Hero Image Selector</h1>
     <!-- images examples shows preview based on ID-->
     <?php 
@@ -34,6 +55,7 @@ border-top: 2px solid #555;
 	<input type='hidden' name='MSR_HERO_IMAGE' id='image_attachment_id' value=''><?php
     ?>
     <br/>
+    <h1>Intro Section</h1>
     <h3>Tagline for your awesome site: </h3>
     <input type="text" size="120" name="MSR_SITE_TAGLINE"  value="<?= MSR_SITE_TAGLINE; ?>"  />
     <br/>
@@ -42,8 +64,16 @@ border-top: 2px solid #555;
     <br/>
     <hr/>
     <h1>SEO Stuff</h1>
-    <h3>Title OG tag (shows up in link previews)</h3>
+    <h3>Title tag </h3>
     <input type="text" size="120" name="MSR_TITLE_OGTAG"  value="<?= MSR_TITLE_OGTAG; ?>"  />
+    <br/>
+    <h3>Description tag </h3>
+    <input type="text" size="120" name="MSR_DESCRIPTION_OGTAG"  value="<?= MSR_DESCRIPTION_OGTAG; ?>"  />
+    <br/>
+    <h3>Site Preview Image URL</h3>
+    <input type="text" size="120" name="MSR_SITE_PREVIEW_IMAGE_URL"  value="<?= MSR_SITE_PREVIEW_IMAGE_URL; ?>"  />
+    <br/>
+    
     <hr/>
     <h1>About Section</h1>
     <h3>About section heading: </h3>
@@ -162,6 +192,23 @@ border-top: 2px solid #555;
     <h3>Email Address</h3>
     <input type="text" size="120" name="MSR_EMAIL_ADDRESS"  value="<?= MSR_EMAIL_ADDRESS; ?>"  />
     <br/>
+    <h1>Blog</h1>
+    <h3>To use this option: </h3>
+    <ol>
+        <li>Create an empty page using the 'landing-page-a-mundo' template, name it 'Home'.</li>
+        <li>Create an empty page using the default template, name it 'Blog'</li>
+        <li>Enable Static home page in the appearance > customize > home page settings</li>
+        <li>Set the homepage to 'Home' and the posts page to 'Blog'</li>
+    </ol>
+    <h4>This selector just enables the navigation link for the blog. </h4>
+<select name="MSR_BLOG_ENABLE" value="<?= MSR_BLOG_ENABLE; ?>">
+        <option value="false" <?= (MSR_BLOG_ENABLE == 'false') ? 'selected' : '' ?>>
+            No
+        </option>
+        <option value="true" <?= (MSR_BLOG_ENABLE == 'true') ? 'selected' : '' ?>>
+            Yes
+        </option>
+    </select>
     <!-- Cancel/Save -->
     <hr/><br/>
     <a href="<?= get_site_url(); ?>/wp-admin/">
